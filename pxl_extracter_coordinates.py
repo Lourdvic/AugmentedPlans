@@ -8,14 +8,12 @@ size = w, h = img.size
 data = img.load()
 
 pxl_coords = []
-#with Image.open('red-background.png') as bg:
 im = Image.new('1', (1200, 1055)) # create the Image of size 1 pixel
 for x in range(w):
     for y in range(h):
         hex_color = '#' + \
         ''.join([ hex(it)[2:].zfill(2).upper() for it in data[x, y] ])
-        #print(hex_color) print the pixel color in hexa
-        #if the pxl is black append to its coordinates
+        #if the pxl is black append to its coordinates and draw it on a new image
         if hex_color == '#000000':
             pxl_coords.append((x, y, hex_color))
             im.putpixel((x, y), ImageColor.getcolor('white', '1')) #draw the pixel
