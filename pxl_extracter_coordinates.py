@@ -1,14 +1,19 @@
 import cv2
-from PIL import Image, ImageColor
+from PIL import ImageColor
+import PIL.Image
 import numpy as np
+from program import Root
+ 
+file = Root()
+path = file.fileDialog()
+print("PATH = ", path)
 
-img = Image.open('plan-1200x1055.jpg')
-
+img = PIL.Image.open(path)
 size = w, h = img.size
 data = img.load()
 
 pxl_coords = []
-im = Image.new('1', (1200, 1055)) # create the Image of size 1 pixel
+im = PIL.Image.new('1', (1200, 1055)) # create the Image of size 1 pixel
 for x in range(w):
     for y in range(h):
         hex_color = '#' + \
@@ -19,6 +24,7 @@ for x in range(w):
             im.putpixel((x, y), ImageColor.getcolor('white', '1')) #draw the pixel
 
 im.save('newplan1.png')
+
 
 
 with open('pxl_black-coords.txt', 'w') as handle:
