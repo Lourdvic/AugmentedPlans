@@ -3,6 +3,7 @@ from PIL import ImageColor
 import PIL.Image
 import numpy as np
 from program import Root
+from save import save
  
 file = Root()
 path = file.fileDialog()
@@ -22,8 +23,7 @@ for x in range(w):
         if hex_color == '#000000':
             pxl_coords.append((x, y, hex_color))
             im.putpixel((x, y), ImageColor.getcolor('white', '1')) #draw the pixel
-
-im.save('newplan1.png')
+im.save(save())
 
 
 
