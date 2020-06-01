@@ -14,7 +14,7 @@ size = w, h = img.size
 data = img.load()
 
 pxl_coords = []
-im = PIL.Image.new('1', (1200, 1055)) # create the Image of size 1 pixel
+im = PIL.Image.new('1', (w, h)) # create the Image of size 1 pixel
 for x in range(w):
     for y in range(h):
         hex_color = '#' + \
