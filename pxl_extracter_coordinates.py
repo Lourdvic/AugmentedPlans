@@ -24,6 +24,7 @@ data = img.load()
 pxl_coords = []
 apfile = ['W']
 listX = []
+listY = []
 im = PIL.Image.new('1', (w, h))
 for x in range(w):
     for y in range(h):
@@ -35,38 +36,37 @@ for x in range(w):
             im.putpixel((x, y), ImageColor.getcolor('white', '1')) #draw the pixels
             
             listX.append(x)
+            listY.append(y)
             prevX = (listX[len(listX) - 2])
-            #print("prevX = ", prevX, "x= ", x)
-            if int(prevX) + 1 < x:
-                apfile.append('W')
-  
-            if x < 10:
-                apfile.append('00000000' + str(round(x * 0.02646)))
-            elif x >= 10 and x < 100:
-                apfile.append('0000000' + str(round(x * 0.02646)))
-            elif x >= 100 and x < 1000:
-                apfile.append('000000' + str(round(x * 0.02646)))
-            elif x >= 1000:
-                apfile.append('00000' + str(round(y * 0.02646)))
-            if y < 10:
-                apfile.append('00000000' + str(round(y * 0.02646)))
-            elif y >= 10 and x < 100:
-                apfile.append('0000000' + str(round(y * 0.02646)))
-            elif y >= 100 and x < 1000:
-                apfile.append('000000' + str(round(y * 0.02646)))
-            elif y >= 1000:
-                apfile.append('00000' + str(round(y * 0.02646)))
+            prevY = (listY[len(listY) - 2])
             
-#print(listX)
+            if round(int(prevX) * 0.02646) + 1 == round(x * 0.02646):
+                apfile.append('W')
+
+            if x != int(prevX) and y != int(prevY):
+                if round(x * 0.02646) < 10:
+                    apfile.append('0000000' + str(round(x * 0.02646)))
+                elif round(x * 0.02646) >= 10 and round(x * 0.02646) < 100:
+                    apfile.append('000000' + str(round(x * 0.02646)))
+                elif round(x * 0.02646) >= 100 and round(x * 0.02646) < 1000:
+                    apfile.append('00000' + str(round(x * 0.02646)))
+                elif round(x * 0.02646) >= 1000:
+                    apfile.append('0000' + str(round(y * 0.02646)))
+                if round(y * 0.02646) < 10:
+                    apfile.append('0000000' + str(round(y * 0.02646)))
+                elif round(y * 0.02646) >= 10 and round(y * 0.02646) < 100:
+                    apfile.append('000000' + str(round(y * 0.02646)))
+                elif round(y * 0.02646) >= 100 and round(y * 0.02646) < 1000:
+                    apfile.append('00000' + str(round(y * 0.02646)))
+                elif round(y * 0.02646) >= 1000:
+                    apfile.append('0000' + str(round(y * 0.02646)))
+      
 apstring = ''.join(apfile)
-#print(apstring)
 im.save(save())
 
-
-
-with open('pxl_black-coords.txt', 'w') as handle:
+with open('./coord/pxl_black-coords1.txt', 'w') as handle:
     for pxl_coord in pxl_coords:
         handle.write(str(pxl_coord).replace("'", '') + '\n' )
 
-with open('apfile.ap', 'w') as handle:
+with open('./ap/apfile2.txt', 'w') as handle:
     handle.write(apstring)
