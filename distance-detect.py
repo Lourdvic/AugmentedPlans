@@ -81,26 +81,26 @@ def getDistance(event):
         # origin X
         if x0 == 0:
             getDistance.apfile.append('000000000')
-        elif x0 < 10 and x0 > 0:
-            getDistance.apfile.append('00000500' + str(x0))
-        elif x0 > 10 and x0 < 100:
-            getDistance.apfile.append('0000500' + str(x0))
-        elif x0 > 100 and x0 < 1000:
-            getDistance.apfile.append('000050' + str(x0))
-        elif x0 > 1000 and x0 < 10000:
+        elif x0 <= 9 and x0 > 0:
+            getDistance.apfile.append('00000000' + str(x0))
+        elif x0 >= 10 and x0 <= 99:
+            getDistance.apfile.append('0000050' + str(x0))
+        elif x0 >= 100 and x0 <= 999:
+            getDistance.apfile.append('000005' + str(x0))
+        elif x0 >= 1000 and x0 <= 9999:
             getDistance.apfile.append('00000' + str(x0))
-        elif x0 > 10000 and x0 < 100000:
+        elif x0 >= 10000 and x0 <= 99999:
             getDistance.apfile.append('0000' + str(x0)) 
 
         # origin y
         if y0 == 0:
             getDistance.apfile.append('000000000')
         elif y0 < 10 and y0 >  0:
-            getDistance.apfile.append('00005000' + str(y0))
+            getDistance.apfile.append('00000000' + str(y0))
         elif y0 > 10 and y0 < 100:
-            getDistance.apfile.append('0000500' + str(y0))
+            getDistance.apfile.append('0000050' + str(y0))
         elif y0 > 100 and y0 < 1000:
-            getDistance.apfile.append('000050' + str(y0))
+            getDistance.apfile.append('000005' + str(y0))
         elif y0 > 1000 and y0 < 10000:
             getDistance.apfile.append('00000' + str(y0))
         elif y0 > 10000 and y0 < 100000:
@@ -115,32 +115,34 @@ def getDistance(event):
         getDistance.apfile.append('000000000')
 
         # size X
-        if mm == 0:
-            getDistance.apfile.append('000000000')
-        elif mm < 10 and mm > 0:
-            getDistance.apfile.append('00000000' + str(mm))
-        elif mm > 10 and mm < 100:
-            getDistance.apfile.append('0000000' + str(mm))
-        elif mm > 100 and mm < 1000:
-            getDistance.apfile.append('000000' + str(mm))
-        elif mm > 1000 and mm < 10000:
-            getDistance.apfile.append('00000' + str(mm))
-        elif mm > 10000 and mm < 100000:
-            getDistance.apfile.append('0000' + str(mm))
+        getDistance.apfile.append('000001000')
+        # if mm == 0:
+        #     getDistance.apfile.append('000000000')
+        # elif mm < 10 and mm > 0:
+        #     getDistance.apfile.append('00000000' + str(mm))
+        # elif mm > 10 and mm < 100:
+        #     getDistance.apfile.append('0000000' + str(mm))
+        # elif mm > 100 and mm < 1000:
+        #     getDistance.apfile.append('000000' + str(mm))
+        # elif mm > 1000 and mm < 10000:
+        #     getDistance.apfile.append('00000' + str(mm))
+        # elif mm > 10000 and mm < 100000:
+        #     getDistance.apfile.append('0000' + str(mm))
         
         # size Y
-        if mm == 0:
-            getDistance.apfile.append('000000000')
-        elif mm < 10 and mm > 0:
-            getDistance.apfile.append('00000000' + str(mm))
-        elif mm > 10 and mm < 100:
-            getDistance.apfile.append('0000000' + str(mm))
-        elif mm > 100 and mm < 1000:
-            getDistance.apfile.append('00000' + str(mm))
-        elif mm > 1000 and mm < 10000:
-            getDistance.apfile.append('00000' + str(mm))
-        elif mm > 10000 and mm < 100000:
-            getDistance.apfile.append('0000' + str(mm))
+        getDistance.apfile.append('000002000')
+        # if mm == 0:
+        #     getDistance.apfile.append('000000000')
+        # elif mm < 10 and mm > 0:
+        #     getDistance.apfile.append('00000000' + str(mm))
+        # elif mm > 10 and mm < 100:
+        #     getDistance.apfile.append('0000000' + str(mm))
+        # elif mm > 100 and mm < 1000:
+        #     getDistance.apfile.append('00000' + str(mm))
+        # elif mm > 1000 and mm < 10000:
+        #     getDistance.apfile.append('00000' + str(mm))
+        # elif mm > 10000 and mm < 100000:
+        #     getDistance.apfile.append('0000' + str(mm))
         
          # size Z
         getDistance.apfile.append('000000000')
