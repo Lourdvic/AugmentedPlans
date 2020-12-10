@@ -10,13 +10,20 @@ import math
 # to draw the lines
 import cv2
 
+# to upload files
+from program import Root
 
 root = Tk()
-imgpath = "plan\white plan\plan-maison-traditionnelle-maison-gallegos-ebe25052a-775x450.jpeg"
+
+file = Root()
+path = file.fileDialog()
+print("PATH = ", path)
+
+imgpath = path
 img = ImageTk.PhotoImage(Image.open(imgpath))
 
 # load the clone image to draw on it
-dimg = cv2.imread(imgpath)
+dimg = cv2.imread(path)
 window_name = "plan image"
 
 panel = Label(root, image=img)
@@ -66,6 +73,7 @@ def getDistance(event):
         echelle = 100
         reeldim = cm * echelle
         mm = round(reeldim * 10)
+        print(mm)
 
         #write AP FILE
         # ID type and group id of the object 
@@ -74,11 +82,11 @@ def getDistance(event):
         if x0 == 0:
             getDistance.apfile.append('000000000')
         elif x0 < 10 and x0 > 0:
-            getDistance.apfile.append('00000000' + str(x0))
+            getDistance.apfile.append('00000500' + str(x0))
         elif x0 > 10 and x0 < 100:
-            getDistance.apfile.append('0000000' + str(x0))
+            getDistance.apfile.append('0000500' + str(x0))
         elif x0 > 100 and x0 < 1000:
-            getDistance.apfile.append('000000' + str(x0))
+            getDistance.apfile.append('000050' + str(x0))
         elif x0 > 1000 and x0 < 10000:
             getDistance.apfile.append('00000' + str(x0))
         elif x0 > 10000 and x0 < 100000:
@@ -88,11 +96,11 @@ def getDistance(event):
         if y0 == 0:
             getDistance.apfile.append('000000000')
         elif y0 < 10 and y0 >  0:
-            getDistance.apfile.append('00000000' + str(y0))
+            getDistance.apfile.append('00005000' + str(y0))
         elif y0 > 10 and y0 < 100:
-            getDistance.apfile.append('0000000' + str(y0))
+            getDistance.apfile.append('0000500' + str(y0))
         elif y0 > 100 and y0 < 1000:
-            getDistance.apfile.append('000000' + str(y0))
+            getDistance.apfile.append('000050' + str(y0))
         elif y0 > 1000 and y0 < 10000:
             getDistance.apfile.append('00000' + str(y0))
         elif y0 > 10000 and y0 < 100000:
@@ -128,7 +136,7 @@ def getDistance(event):
         elif mm > 10 and mm < 100:
             getDistance.apfile.append('0000000' + str(mm))
         elif mm > 100 and mm < 1000:
-            getDistance.apfile.append('000000' + str(mm))
+            getDistance.apfile.append('00000' + str(mm))
         elif mm > 1000 and mm < 10000:
             getDistance.apfile.append('00000' + str(mm))
         elif mm > 10000 and mm < 100000:
@@ -148,7 +156,7 @@ def getDistance(event):
             handle.write(apstring)
 
 
-        print(mm)
+        
         counter = 0
         getDistance.nbwalls += 1
         
